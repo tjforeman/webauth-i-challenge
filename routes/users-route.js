@@ -1,8 +1,9 @@
 const knex=require('knex');
 const router = require('express').Router();
 const db =require('../data/dbConfig.js');
+const protected=require('../auth/protected.js')
 
-router.get('/', (req, res) => {
+router.get('/', protected,(req, res) => {
     db('users')
     .then(users=>{
       res.status(200).json(users)
